@@ -5,9 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from account.serializers import UserLoginSerializer, UserRegistrationSerializer, UserProfileSerializer
-from account.models import User
+
 
 def login(request):
     if request.method == 'POST':
@@ -22,19 +23,21 @@ def login(request):
     else:
         serializer = UserLoginSerializer()
     context = {'serializer': serializer}
-    return render(request, 'users/login.html', context)
+    return render(request, 'account/login.html', context)
 
+
+@csrf_exempt
 def registration(request):
     if request.method == 'POST':
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             messages.success(request, 'Поздравляем, вы успешно зарегистрировались!')
-            return HttpResponseRedirect(reverse('users:login'))
+            return HttpResponseRedirect(reverse('account:login'))
     else:
         serializer = UserRegistrationSerializer()
     context = {'serializer': serializer}
-    return render(request, 'users/registration.html', context)
+    return render(request, 'account/registration.html', context)
 
 @login_required()
 def profile(request):
@@ -42,7 +45,7 @@ def profile(request):
         serializer = UserProfileSerializer(instance=request.user, data=request.data, files=request.FILES)
         if serializer.is_valid():
             serializer.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponseRedirect(reverse('account:profile'))
         else:
             print(serializer.errors)
     else:
@@ -52,7 +55,8 @@ def profile(request):
         'title': 'Store-Профиль',
         'serializer': serializer,
     }
-    return render(request, 'users/profile.html', context)
+    return render(request, 'account/profile.html', context)
+
 
 def logout(request):
     auth.logout(request)

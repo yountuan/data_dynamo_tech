@@ -10,3 +10,4 @@ channels-redis
 daphne
 redis
 djangochannelsrestframework
+Pillow

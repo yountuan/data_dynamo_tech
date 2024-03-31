@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'account/base.html' %}
 
 {% block content %}
     <main>
@@ -18,7 +18,7 @@
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Создать аккаунт</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{% url 'users:registration' %}" method="post">
+                                <form action="{% url 'account:registration' %}" method="post">
                                     {% csrf_token %}
                                     <div class="form-row">
                                         <div class="col-md-6">
@@ -66,7 +66,7 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center">
-                                <div class="small"><a href="{% url 'users:login' %}">Уже есть аккаунт? Авторизоваться</a></div>
+                                <div class="small"><a href="{% url 'account:login' %}">Уже есть аккаунт? Авторизоваться</a></div>
                             </div>
                         </div>
                     </div>
