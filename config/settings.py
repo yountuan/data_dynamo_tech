@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     #libraries
     'rest_framework',
     'rest_framework_swagger',
     'drf_yasg',
     'django_filters',
+    'channels',
 
     #apps
     'account',
@@ -77,8 +79,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+ASGI_APPLICATION = 'config.asgi.application'
 
+CHANNELS_LAYERS = {
+  'default': {
+    'BACKEND': 'channels.layers.InMemoryChannelLayer'
+  }
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

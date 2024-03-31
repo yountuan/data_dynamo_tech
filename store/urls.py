@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import ProductViewSet, LocationViewSet, EstablishmentViewSet, CategoryViewSet
 from .swagger import *
 from rest_framework.authtoken import views
+from . import views
 
 router = DefaultRouter()
 router.register(r'category', CategoryViewSet)
@@ -12,6 +13,7 @@ router.register(r'establishments', EstablishmentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('lobby/', views.lobby, name='lobby'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

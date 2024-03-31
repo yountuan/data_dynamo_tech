@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -52,3 +53,7 @@ class EstablishmentViewSet(viewsets.ModelViewSet):
     ordering_fields = ['id', 'name', 'location',]
     ordering = ['id']
     pagination_class = AllPagination
+
+
+def lobby(request):
+    return render(request, 'store/lobby.html')
