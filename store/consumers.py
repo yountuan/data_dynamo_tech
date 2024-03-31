@@ -16,3 +16,16 @@ class ProductsConsumer(
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+class EstablishmentsConsumer(
+        mixins.ListModelMixin,
+        mixins.RetrieveModelMixin,
+        mixins.PatchModelMixin,
+        mixins.UpdateModelMixin,
+        mixins.CreateModelMixin,
+        mixins.DeleteModelMixin,
+        GenericAsyncAPIConsumer,
+):
+
+    queryset = Establishment.objects.all()
+    serializer_class = EstablishmentSerializer

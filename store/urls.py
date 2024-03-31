@@ -13,7 +13,8 @@ router.register(r'establishments', EstablishmentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('lobby/', views.lobby, name='lobby'),
+    path('lobby/products/', views.lobby, name='products'),
+    path('lobby/establishments/', views.lobby_e, name='establishments'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

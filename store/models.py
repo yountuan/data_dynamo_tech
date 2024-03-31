@@ -26,7 +26,7 @@ class Category(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name}/n {self.description}"
+        return f"{self.id}: {self.name}"
 
 
 class Product(models.Model):

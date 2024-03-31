@@ -18,7 +18,7 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 
-from store.consumers import ProductsConsumer
+from store.consumers import ProductsConsumer, EstablishmentsConsumer
 
 
 django_asgi_app = get_asgi_application()
@@ -27,7 +27,10 @@ application = ProtocolTypeRouter({
     'http': django_asgi_app,
     'websocket': AuthMiddlewareStack(
         URLRouter([
-            path('api/v1/store/lobby/', ProductsConsumer.as_asgi())
+            path('api/v1/store/lobby/products/', ProductsConsumer.as_asgi()),
+            path('api/v1/store/lobby/establishments/', EstablishmentsConsumer.as_asgi()),
+
+
         ])
     )
 })

@@ -57,3 +57,6 @@ class EstablishmentViewSet(viewsets.ModelViewSet):
 
 def lobby(request):
     return render(request, 'store/lobby.html')
+
+def lobby_e(request):
+    return render(request, 'store/establishments.html')

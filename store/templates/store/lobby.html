@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Consumer</title>
+    <title>APIs </title>
 </head>
 <body>
-    <h1>Let's see crud of products</h1>
+    <h1>Let's see CRUD of Products</h1>
 
     <button id="list">List</button>
     <button id="retrieve">Retrieve</button>
@@ -17,7 +17,7 @@
 
     <pre id="response"></pre>
     <script type="text/javascript">
-        const ws = new WebSocket("ws://localhost:8000/api/v1/store/lobby/")
+        const ws = new WebSocket("ws://localhost:8000/api/v1/store/lobby/products/")
 
         ws.onmessage = function (e) {
             document.getElementById("response").textContent = JSON.stringify(JSON.parse(e.data), undefined, 2);
@@ -35,7 +35,7 @@
             ws.send(JSON.stringify({
                 action: "retrieve",
                 request_id: new Date().getTime(),
-                pk: 3
+                pk: 1
             }))
         }
 
@@ -44,9 +44,11 @@
                 action: "create",
                 request_id: new Date().getTime(),
                 data: {
-                    "address": "Chui 12",
-                    "city": "Bishkek",
-                    "country": "Kyrgyzstan",
+                    name: "Bread",
+                    price: "250",
+                    quantity: "50",
+                    establishment: 1,
+                    categories: ["1", "2",],
                 }
             }))
         }
@@ -55,9 +57,9 @@
             ws.send(JSON.stringify({
                 action: "patch",
                 request_id: new Date().getTime(),
-                pk: 2,
+                pk: 1,
                 data: {
-                    address: "Manas 15"
+                    establishment: 2,
                 }
             }))
         }
@@ -66,9 +68,13 @@
             ws.send(JSON.stringify({
                 action: "update",
                 request_id: new Date().getTime(),
-                pk: 3,
+                pk: 1,
                 data: {
-                    address: "Manas 25"
+                    name: "Cookies",
+                    price: "300",
+                    quantity: "40",
+                    establishment: 2,
+                    categories: ["1",],
                 }
             }))
         }
@@ -77,11 +83,11 @@
             ws.send(JSON.stringify({
                 action: "delete",
                 request_id: new Date().getTime(),
-                pk: 2
+                pk: 1
             }))
         }
 
     </script>
-    
+
 </body>
 </html> 
