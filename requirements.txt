@@ -12,3 +12,4 @@ redis
 djangochannelsrestframework
 Pillow
 dj-database-url
+gunicorn
