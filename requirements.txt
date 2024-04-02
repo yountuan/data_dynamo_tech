@@ -13,3 +13,4 @@ djangochannelsrestframework
 Pillow
 dj-database-url
 gunicorn
+WhiteNoise
