@@ -29,7 +29,7 @@ def login(request):
 @csrf_exempt
 def registration(request):
     if request.method == 'POST':
-        serializer = UserRegistrationSerializer(data=request.data)
+        serializer = UserRegistrationSerializer(data=request.POST)
         if serializer.is_valid():
             serializer.save()
             messages.success(request, 'Поздравляем, вы успешно зарегистрировались!')
@@ -38,6 +38,7 @@ def registration(request):
         serializer = UserRegistrationSerializer()
     context = {'serializer': serializer}
     return render(request, 'account/registration.html', context)
+
 
 @login_required()
 def profile(request):
