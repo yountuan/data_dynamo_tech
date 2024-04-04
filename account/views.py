@@ -6,11 +6,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 
 from account.serializers import UserLoginSerializer, UserRegistrationSerializer, UserProfileSerializer
 
-
+@api_view(['POST'])
 def login(request):
     if request.method == 'POST':
         serializer = UserLoginSerializer(data=request.data)
@@ -27,7 +28,8 @@ def login(request):
     return render(request, 'account/login.html', context)
 
 
-@csrf_exempt
+#@csrf_exempt
+@api_view(['POST'])
 def registration(request):
     if request.method == 'POST':
         serializer = UserRegistrationSerializer(data=request.POST)
@@ -41,6 +43,7 @@ def registration(request):
     return render(request, 'account/registration.html', context)
 
 
+@api_view(['GET', 'POST'])
 @login_required()
 def profile(request):
     if request.method == 'POST':
@@ -60,6 +63,7 @@ def profile(request):
     return render(request, 'account/profile.html', context)
 
 
+@api_view(['POST'])
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
