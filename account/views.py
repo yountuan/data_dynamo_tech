@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
+
 from account.serializers import UserLoginSerializer, UserRegistrationSerializer, UserProfileSerializer
 
 
@@ -62,3 +63,4 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
+
