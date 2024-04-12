@@ -10,7 +10,6 @@ class Location(models.Model):
 
     def __str__(self) -> str:
         return f"{self.address}, {self.city}, {self.country}, Work time: {self.opening_hours}-{self.closing_hours}"
-    
 
 class Establishment(models.Model):
     name = models.CharField(max_length=100)

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -39,8 +38,7 @@ def registration(request):
             return HttpResponseRedirect(reverse('account:login'))
     else:
         serializer = UserRegistrationSerializer()
-    context = {'serializer': serializer}
-    return render(request, 'account/registration.html', context)
+    return render(request, 'account/registration.html', {'form': serializer})
 
 
 @api_view(['GET', 'POST'])

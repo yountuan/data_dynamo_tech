@@ -35,7 +35,7 @@
             ws.send(JSON.stringify({
                 action: "retrieve",
                 request_id: new Date().getTime(),
-                pk: 1
+                pk: 7
             }))
         }
 
@@ -47,7 +47,7 @@
                     name: "Bread",
                     price: "250",
                     quantity: "50",
-                    establishment: 1,
+                    establishment: 2,
                     categories: ["1", "2",],
                 }
             }))
@@ -57,7 +57,7 @@
             ws.send(JSON.stringify({
                 action: "patch",
                 request_id: new Date().getTime(),
-                pk: 1,
+                pk: 7,
                 data: {
                     establishment: 2,
                 }
@@ -68,7 +68,7 @@
             ws.send(JSON.stringify({
                 action: "update",
                 request_id: new Date().getTime(),
-                pk: 1,
+                pk: 7,
                 data: {
                     name: "Cookies",
                     price: "300",
@@ -83,7 +83,7 @@
             ws.send(JSON.stringify({
                 action: "delete",
                 request_id: new Date().getTime(),
-                pk: 1
+                pk: 7
             }))
         }
 
