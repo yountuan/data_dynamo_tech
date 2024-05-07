@@ -1,4 +1,5 @@
-CRM for shop inventory. Technology used: Django Rest Framework, Web Sockets, Docker Compose, Swagger Documentation, Render Server, Git
+Since we were allowed to do any project by our Dean, I developed a CRM for shop inventory. Technology used: Django Rest Framework, JWT Authentication, Web Sockets, Docker Compose, Swagger Documentation, Render Server, Git,
+
 Deploy in Free Render Server;
 
 Web service backend deploy: https://store-8r6h.onrender.com
