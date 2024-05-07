@@ -14,6 +14,7 @@ router.register(r'products', ProductViewSet)
 router.register(r'locations', LocationViewSet)
 router.register(r'establishments', EstablishmentViewSet)
 
+#url paths
 urlpatterns = [
     path('', include(router.urls)),
     path('lobby/products/', views.lobby, name='products'),

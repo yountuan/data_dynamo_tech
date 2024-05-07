@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
 
 }
 
-
+#swagger documentation
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
